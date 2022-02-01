@@ -2,8 +2,16 @@ import React, { Component } from 'react';
 import './App.css';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import About from './Components/AboutComponent';
+import { FEATURES } from './Shared/features';
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            features: FEATURES
+        };
+    }
+
     render() {
         return (
             <div className="App">
@@ -12,7 +20,7 @@ class App extends Component {
                         <NavbarBrand href="/">GrapeVine</NavbarBrand>
                     </div>
                 </Navbar>
-                <About />
+                <About features={this.state.features} />
             </div>
         );
     }
