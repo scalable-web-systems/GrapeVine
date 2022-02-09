@@ -3,8 +3,7 @@ import { Card, CardImg, CardTitle } from 'reactstrap';
 
 function RenderFeature({ feature, onClick }) {
     return (
-        <Card
-            onClick={() => onClick(feature.id)}>
+        <Card>
             <CardImg width="100%" src={feature.image} alt={feature.name} />
             <CardTitle>{feature.name}</CardTitle>
         </Card>
