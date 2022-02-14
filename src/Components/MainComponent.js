@@ -4,7 +4,6 @@ import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import About from './AboutComponent';
-import FeatureDetail from './FeatureDetailComponent';
 import Contact from './ContactComponent';
 import { FEATURES } from '../Shared/features';
 import { LEADERS } from '../Shared/leaders';

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, CardImg, CardTitle, CardText, CardHeader, CardBody, Media } from 'reactstrap';
+import { Card, CardImg, CardTitle, CardText, CardHeader, CardBody, Media, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 function RenderFeature({ feature, onClick }) {
     return (
@@ -46,6 +47,12 @@ const About = (props) => {
 
     return (
         <div className="container">
+            <div className="row">
+                <Breadcrumb>
+                    <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                    <BreadcrumbItem active>About</BreadcrumbItem>
+                </Breadcrumb>
+            </div>
             <div className="row">
                 {featuresPlace}
             </div>
