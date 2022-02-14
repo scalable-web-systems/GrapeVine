@@ -1,11 +1,12 @@
 import React from 'react';
-import { Card, CardImg, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardTitle, CardText } from 'reactstrap';
 
 function RenderFeature({ feature, onClick }) {
     return (
         <Card>
             <CardImg width="100%" src={feature.image} alt={feature.name} />
             <CardTitle>{feature.name}</CardTitle>
+            <CardText>{feature.description}</CardText>
         </Card>
     );
 }

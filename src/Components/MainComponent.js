@@ -30,7 +30,7 @@ class Main extends Component {
                 <Routes>
                     <Route path='/home' element={<Home leader={this.state.leaders.filter((leader) => leader.id === 0)[0]} />} />
                     <Route exact path='/about' element={<About features={this.state.features} onClick={(featureId) => this.onFeatureSelect(featureId)} />} />
-                    <Route exact path='/contactus' element={Contact} />
+                    <Route exact path='/contactus' element={<Contact />} />
                     <Route path="*" element={<Navigate to="/home" />} />
                 </Routes>
                 {/*<FeatureDetail feature={this.state.features.filter((feature) => feature.id === this.state.selectedFeature)[0]} />*/}
