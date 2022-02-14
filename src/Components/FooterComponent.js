@@ -20,10 +20,9 @@ function Footer(props) {
                             181 Presidents Drive<br />
                             Amherst, MA<br />
                             United States<br />
-                            <i className="fa fa-phone fa-lg"></i>: +852 1234 5678<br />
-                            <i className="fa fa-fax fa-lg"></i>: +852 8765 4321<br />
-                            <i className="fa fa-envelope fa-lg"></i>: <a href="mailto:fruit@grapevine.com">
-                                fruit@grapevine.com</a>
+                            <i className="fa fa-phone fa-lg"></i>: +123 456 7890<br />
+                            <i className="fa fa-fax fa-lg"></i>: +123 456 7890<br />
+                            <i className="fa fa-envelope fa-lg"></i>: <a href="mailto:fruit@grapevine.com">fruit@grapevine.com</a>
                         </address>
                     </div>
                     <div className="col-12 col-sm-4 align-self-center">

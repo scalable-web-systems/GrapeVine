@@ -5,7 +5,9 @@ import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import About from './AboutComponent';
 import FeatureDetail from './FeatureDetailComponent';
+import Contact from './ContactComponent';
 import { FEATURES } from '../Shared/features';
+import { LEADERS } from '../Shared/leaders';
 
 class Main extends Component {
 
@@ -13,7 +15,7 @@ class Main extends Component {
         super(props);
         this.state = {
             features: FEATURES,
-            selectedFeature: null
+            leaders: LEADERS
         };
     }
 
@@ -26,8 +28,9 @@ class Main extends Component {
             <div>
                 <Header />
                 <Routes>
-                    <Route path='/home' element={<Home />} />
-                    <Route exact path='/about' element={<About features={this.state.features} onClick={(featureId) => this.onFeatureSelect(featureId)}/>} />
+                    <Route path='/home' element={<Home leader={this.state.leaders.filter((leader) => leader.id === 0)[0]} />} />
+                    <Route exact path='/about' element={<About features={this.state.features} onClick={(featureId) => this.onFeatureSelect(featureId)} />} />
+                    <Route exact path='/contactus' element={Contact} />
                     <Route path="*" element={<Navigate to="/home" />} />
                 </Routes>
                 {/*<FeatureDetail feature={this.state.features.filter((feature) => feature.id === this.state.selectedFeature)[0]} />*/}
