@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
@@ -7,6 +8,13 @@ import About from './AboutComponent';
 import Contact from './ContactComponent';
 import { FEATURES } from '../Shared/features';
 import { LEADERS } from '../Shared/leaders';
+
+const mapStateToProps = state => {
+    return {
+        features: state.features,
+        leaders: state.leaders
+    }
+}
 
 class Main extends Component {
 
@@ -38,5 +46,8 @@ class Main extends Component {
         );
     }
 }
-
+const ConnectedComponent = connect(mapStateToProps)(Main)
+/*const withRouterComponent = (props) => <Route render={ <ConnectedComponent /> } />
+export default withRouterComponent;
+export default withRouter(connect(mapStateToProps)(Main));*/
 export default Main;
