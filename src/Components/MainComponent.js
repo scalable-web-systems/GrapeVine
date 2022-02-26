@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Routes, Route, Navigate, withRouter } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
@@ -13,6 +13,14 @@ const mapStateToProps = state => {
     return {
         features: state.features,
         leaders: state.leaders
+    }
+}
+
+export function withRouter(Child) {
+    return (props) => {
+        const location = useLocation();
+        const navigate = useNavigate();
+        return <Child navigate={navigate} location={location} />;
     }
 }
 
@@ -46,8 +54,5 @@ class Main extends Component {
         );
     }
 }
-const ConnectedComponent = connect(mapStateToProps)(Main)
-/*const withRouterComponent = (props) => <Route render={ <ConnectedComponent /> } />
-export default withRouterComponent;
-export default withRouter(connect(mapStateToProps)(Main));*/
-export default Main;
+
+export default withRouter(connect(mapStateToProps)(Main));
