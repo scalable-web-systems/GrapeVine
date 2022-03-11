@@ -8,6 +8,7 @@ import About from './AboutComponent';
 import Contact from './ContactComponent';
 import { FEATURES } from '../Shared/features';
 import { LEADERS } from '../Shared/leaders';
+import { addFeatures, fetchFeatures } from '../Redux/ActionCreators';
 
 const mapStateToProps = state => {
     return {
@@ -15,6 +16,10 @@ const mapStateToProps = state => {
         leaders: state.leaders
     }
 }
+
+const mapDispatchToProps = (dispatch) => ({
+    fetchFeatures: () => { dispatch(fetchFeatures) }
+});
 
 export function withRouter(Child) {
     return (props) => {
@@ -34,6 +39,10 @@ class Main extends Component {
         };
     }
 
+    /*componentDidMount() {
+        this.props.fetchFeatures();
+    }*/
+
     onFeatureSelect(featureId) {
         this.setState({ selectedFeature: featureId });
     }
@@ -44,7 +53,11 @@ class Main extends Component {
                 <Header />
                 <Routes>
                     <Route path='/home' element={<Home leader={this.state.leaders.filter((leader) => leader.id === 0)[0]} />} />
-                    <Route exact path='/about' element={<About leaders={this.state.leaders} features={this.state.features} onClick={(featureId) => this.onFeatureSelect(featureId)} />} />
+                    <Route exact path='/about' element={<About leaders={this.state.leaders}
+                        features={this.state.features}
+                        featuresLoading={this.props.features.isLoading}
+                        featuresErrMess={this.props.features.errMess}
+                        onClick={(featureId) => this.onFeatureSelect(featureId)} />} />
                     <Route exact path='/contactus' element={<Contact />} />
                     <Route path="*" element={<Navigate to="/home" />} />
                 </Routes>
@@ -55,4 +68,4 @@ class Main extends Component {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(Main));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
