@@ -6,6 +6,7 @@ import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
+import PostLoginMain from './PostLoginMain';
 import { FEATURES } from '../Shared/features';
 import { LEADERS } from '../Shared/leaders';
 import { addFeatures, fetchFeatures } from '../Redux/ActionCreators';
@@ -35,8 +36,10 @@ class Main extends Component {
         super(props);
         this.state = {
             features: FEATURES,
-            leaders: LEADERS
+            leaders: LEADERS,
+            isLoggedIn: false
         };
+        this.handleLoginSwitch = this.handleLoginSwitch.bind(this);
     }
 
     /*componentDidMount() {
@@ -47,24 +50,36 @@ class Main extends Component {
         this.setState({ selectedFeature: featureId });
     }
 
+    handleLoginSwitch() {
+        this.setState({
+            isLoggedIn: !this.state.isLoggedIn
+        });
+    }
+
     render() {
-        return (
-            <div>
-                <Header />
-                <Routes>
-                    <Route path='/home' element={<Home leader={this.state.leaders.filter((leader) => leader.id === 0)[0]} />} />
-                    <Route exact path='/about' element={<About leaders={this.state.leaders}
-                        features={this.state.features}
-                        featuresLoading={this.props.features.isLoading}
-                        featuresErrMess={this.props.features.errMess}
-                        onClick={(featureId) => this.onFeatureSelect(featureId)} />} />
-                    <Route exact path='/contactus' element={<Contact />} />
-                    <Route path="*" element={<Navigate to="/home" />} />
-                </Routes>
-                {/*<FeatureDetail feature={this.state.features.filter((feature) => feature.id === this.state.selectedFeature)[0]} />*/}
-                <Footer />
-            </div>
-        );
+        if (this.state.isLoggedIn) {
+            return (
+                <PostLoginMain />
+            );
+        } else {
+            return (
+                <div>
+                    <Header isLoggedIn={this.handleLoginSwitch}/>
+                    <Routes>
+                        <Route path='/home' element={<Home leader={this.state.leaders.filter((leader) => leader.id === 0)[0]} />} />
+                        <Route exact path='/about' element={<About leaders={this.state.leaders}
+                            features={this.state.features}
+                            featuresLoading={this.props.features.isLoading}
+                            featuresErrMess={this.props.features.errMess}
+                            onClick={(featureId) => this.onFeatureSelect(featureId)} />} />
+                        <Route exact path='/contactus' element={<Contact />} />
+                        <Route path="*" element={<Navigate to="/home" />} />
+                    </Routes>
+                    {/*<FeatureDetail feature={this.state.features.filter((feature) => feature.id === this.state.selectedFeature)[0]} />*/}
+                    <Footer />
+                </div>
+            );
+        }
     }
 }
 
