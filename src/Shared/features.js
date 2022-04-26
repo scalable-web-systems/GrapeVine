@@ -1,3 +1,8 @@
+// Create an array of features to post on the About page, showcasing what the website has to offer.
+// id: index of object within array
+// name: a title that is displayed as the headline for the card
+// image: the file path for the image to be used for this object
+// description: further insight into a useful feature
 export const FEATURES = [
         {
             id: 0,

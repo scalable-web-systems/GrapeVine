@@ -1,3 +1,5 @@
+
+
 import React, { Component } from 'react';
 import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -42,10 +44,6 @@ class Main extends Component {
         this.handleLoginSwitch = this.handleLoginSwitch.bind(this);
     }
 
-    /*componentDidMount() {
-        this.props.fetchFeatures();
-    }*/
-
     onFeatureSelect(featureId) {
         this.setState({ selectedFeature: featureId });
     }
@@ -75,7 +73,6 @@ class Main extends Component {
                         <Route exact path='/contactus' element={<Contact />} />
                         <Route path="*" element={<Navigate to="/home" />} />
                     </Routes>
-                    {/*<FeatureDetail feature={this.state.features.filter((feature) => feature.id === this.state.selectedFeature)[0]} />*/}
                     <Footer />
                 </div>
             );

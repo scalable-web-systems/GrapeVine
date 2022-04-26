@@ -1,3 +1,10 @@
+// Create an array of leaders to post on the About page, showcasing the people who made the website possible.
+// id: index of object within array
+// name: a title that is displayed as the headline for the card
+// image: the file path for the image to be used for this object
+// designation: the position or rank that the employee holds
+// abbr: short for abbreviation, denoting the shorthand for the employee's designation
+// description: further insight into a leader's nature
 export const LEADERS = [
     {
         id: 0,
