@@ -1,3 +1,4 @@
+// Placeholder: will serve as the location to view available groups
 import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 

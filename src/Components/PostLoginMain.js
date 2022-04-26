@@ -1,15 +1,22 @@
+// Focal point of post-login application: controls main workflow of the page rendering depending on user interaction
+// import React: makes use of basic react jsx syntax
+// import Component: allows for declaration of react-based classes
+
+// import Routes: switch statement for route creation
+// import Route: represents a case in the routes switch statement. Each route will link to a different render
+// import Navigate: automatically routes to a location regardless of user input
 import React, { Component } from 'react';
-import { Card, CardBody, CardText, CardTitle, CardImg } from 'reactstrap';
-import { Router, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Card, CardBody, CardText, CardTitle } from 'reactstrap';
+import { Routes, Route, Navigate } from 'react-router-dom';
+
+// import supporting local files
 import Header from './LoginNavComponent';
 import LoginHome from './LoginHomeComponent';
 import Group from './LoginGroupPage';
 import { GROUPS } from '../Shared/groups';
-/*import Header from './HeaderComponent';
-import Footer from './FooterComponent';*/
 
 class Main extends Component {
-
+    // groups: state property containing data from the groups list
     constructor(props) {
         super(props);
         this.state = {
@@ -17,6 +24,11 @@ class Main extends Component {
         };
     }
 
+    // render the post-login application
+    // keeps header at left by default
+    // main route: goes to LoginHomeComponent
+    // group-1 route: goes to LoginGroupPage
+    // group-2 route: goes to LoginGroupPage
     render() {
         return (
             <div>

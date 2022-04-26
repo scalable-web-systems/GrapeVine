@@ -1,3 +1,4 @@
+// Placeholder: Will serve as the location of the post-login default group template
 import React from 'react';
 
 function Group(props) {

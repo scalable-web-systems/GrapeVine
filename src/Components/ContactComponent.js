@@ -1,8 +1,22 @@
+// Alternative route of pre-login application: contains contact form for feedback submission
+// import React: makes use of basic react jsx syntax
+// import Component: allows for declaration of react-based classes
+// import Breadcrumb: similar to Routes; a switch statement used to create a back trail to other tabs in a tree-style single page application
+// import BreadcrumbItem: similar to Route; represents a case in the Breadcrumb switch statement. Each crumb will show the path to a different render
+// import Link: supplementary to BreadcrumbItem and contains actual link to access render
 import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Label, Input, Col, FormFeedback } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 class Contact extends Component {
+    // firstname: contact form user's first name
+    // lastname: contact form user's last name
+    // telnum: contact form user's phone number
+    // email: contact form user's email address
+    // agree: contact form user's decision to allow system to remember the information
+    // contactType: contact form user's preferred primary mode of contact
+    // message: contact form user's message to the company
+    // touched: used to verify contact form is properly filled
     constructor(props) {
         super(props);
 
@@ -28,12 +42,14 @@ class Contact extends Component {
 
     }
 
+    // event handler: updates state when contact form are is selected
     handleBlur = (field) => (evt) => {
         this.setState({
             touched: { ...this.state.touched, [field]: true }
         });
     }
 
+    // validates user inputs in contact form
     validate(firstname, lastname, telnum, email) {
         const errors = {
             firstname: '',
@@ -62,6 +78,7 @@ class Contact extends Component {
         return errors;
     }
 
+    // event handler: updates state based on input type
     handleInputChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -72,12 +89,14 @@ class Contact extends Component {
         });
     }
 
+    // event handler: displays submission data once form is validated
     handleSubmit(event) {
         console.log('Current State is: ' + JSON.stringify(this.state));
         alert('Current State is: ' + JSON.stringify(this.state));
         event.preventDefault();
     }
 
+    // contact form rendering
     render() {
         const errors = this.validate(this.state.firstname, this.state.lastname, this.state.telnum, this.state.email);
         return (

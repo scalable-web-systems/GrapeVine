@@ -1,3 +1,6 @@
+// Pre-login constant: contains navigation tools and contact information
+// import React: makes use of basic react jsx syntax
+// import Link: Contains actual link to access render
 import React from 'react';
 import { Link } from 'react-router-dom';
 

@@ -1,31 +1,43 @@
+// Post-login constant: contains navigation tools and logout modal
+// import React: makes use of basic react jsx syntax
+// import Component: allows for declaration of react-based classes
 import React, { Component } from 'react';
-import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Button, Modal, ModalHeader, ModalBody, Form, Media } from 'reactstrap';
+import { Nav, Navbar, NavbarToggler, Collapse, NavItem, Button, Modal, ModalHeader, ModalBody, Form } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
+    // isNavOpen: boolean to determine if the navbar is collapsed
+    // isLogoutModalOpen: boolean to determine if the logout modal is open
     constructor(props) {
         super(props);
         this.state = {
             isNavOpen: false,
             isLogoutModalOpen: false
         };
+
+        // using a bind function allows the state to retain data changes when a function is passed to another component (in this case several)
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleLogoutModal = this.toggleLogoutModal.bind(this);
+
+        // place holder bind: will be used for joining new groups later on
         this.handleLogin = this.handleLogin.bind(this);
     }
 
+    // change the state of navbar toggle when this method is called
     toggleNav() {
         this.setState({
             isNavOpen: !this.state.isNavOpen
         });
     }
 
+    // change the state of logout modal toggle when this method is called
     toggleLogoutModal() {
         this.setState({
             isLogoutModalOpen: !this.state.isLogoutModalOpen
         });
     }
 
+    // placeholder event handler: will be used for joining new groups
     handleLogin(event) {
         this.toggleLogoutModal();
         alert("Username: " + this.username.value + " Password: " + this.password.value
@@ -34,6 +46,7 @@ class Header extends Component {
         event.preventDefault();
     }
 
+    // render side navbar and logout button
     render() {
         return (
             <div className="navbar-mark">

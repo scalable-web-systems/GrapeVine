@@ -1,8 +1,15 @@
+// Pre-login constant: contains navigation tools and login/signup modals
+// import React: makes use of basic react jsx syntax
+// import Component: allows for declaration of react-based classes
+
 import React, { Component } from 'react';
 import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
+    // isNavOpen: boolean to determine if the navbar is collapsed
+    // isLoginModalOpen: boolean to determine if the login modal is open
+    // isSignUpModalOpen: boolean to determine if the signup modal is open
     constructor(props) {
         super(props);
         this.state = {
@@ -10,6 +17,7 @@ class Header extends Component {
             isLoginModalOpen: false,
             isSignUpModalOpen: false
         };
+        // using a bind function allows the state to retain data changes when a function is passed to another component (in this case several)
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleLoginModal = this.toggleLoginModal.bind(this);
         this.toggleSignUpModal = this.toggleSignUpModal.bind(this);
@@ -17,24 +25,27 @@ class Header extends Component {
         this.handleSignUp = this.handleSignUp.bind(this);
     }
 
+    // change the state of navbar toggle when this method is called
     toggleNav() {
         this.setState({
             isNavOpen: !this.state.isNavOpen
         });
     }
 
+    // change the state of login modal toggle when this method is called
     toggleLoginModal() {
         this.setState({
             isLoginModalOpen: !this.state.isLoginModalOpen
         });
     }
 
+    // change the state of signup modal toggle when this method is called
     toggleSignUpModal() {
         this.setState({
             isSignUpModalOpen: !this.state.isSignUpModalOpen
         });
     }
-
+    // event handler: updates state when login is submitted (also toggles isLoggedIn from MainComponent)
     handleLogin(event) {
         this.toggleLoginModal();
         alert("Username: " + this.username.value + " Password: " + this.password.value
@@ -43,6 +54,7 @@ class Header extends Component {
         event.preventDefault();
     }
 
+    // event handler: updates state when signup is submitted
     handleSignUp(event) {
         this.toggleSignUpModal();
         alert("Username: " + this.username.value + " Password: " + this.password.value
@@ -51,6 +63,7 @@ class Header extends Component {
 
     }
 
+    // render Navbar, Login/SignUp buttons and modals, and logo
     render() {
         return (
             <div>
