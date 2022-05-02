@@ -1,5 +1,7 @@
 NAME: Vineeth Rao
+
 CS 496 Independent Study
+
 Spring 2022
 
 # Getting Started with Create React App
